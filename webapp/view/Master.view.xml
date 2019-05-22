@@ -1,21 +1,20 @@
 <mvc:View controllerName="opensap.Orders.controller.Master" xmlns="sap.m" xmlns:semantic="sap.f.semantic" xmlns:mvc="sap.ui.core.mvc"
 	xmlns:layout="sap.ui.layout" xmlns:f="sap.f">
 	<semantic:SemanticPage id="masterPage" preserveHeaderStateOnScroll="true" toggleHeaderOnTitleClick="false">
-		<semantic:titleHeading>
-			<Title id="masterPageTitle" text="{masterView>/title}"/>
-		</semantic:titleHeading>
 		<semantic:headerContent>
-			<layout:HorizontalLayout allowWrapping="true">
-				<layout:VerticalLayout class="sapUiMediumMarginEnd">
-					<f:Avatar src="./test-resources/sap/f/images/Speakers_avatar_01.jpg" displaySize="XL" displayShape="Square"></f:Avatar>
-					<ObjectAttribute title="UI5 Air Cargo" text="You name it, we ship it!"/>
+			<layout:HorizontalLayout class="sapUiContentPadding">
+				<f:Avatar src="sap-icon://sap-ui5" displaySize="S" displayShape="Circle"></f:Avatar>
+				<layout:VerticalLayout>
+					<Label text="UI5 Air Cargo" design="Bold"/>
+					<ObjectAttribute text="You name it, we ship it!"/>
 				</layout:VerticalLayout>
 			</layout:HorizontalLayout>
+			<ObjectAttribute text="{masterView>/title}"/>
 		</semantic:headerContent>
 		<semantic:content>
 			<!-- For client side filtering add this to the items attribute: parameters: {operationMode: 'Client'}}" -->
 			<List id="list" width="auto" class="sapFDynamicPageAlignContent"
-				items="{ path: '/SalesOrderSet', sorter: { path: 'CustomerName', descending: false }, groupHeaderFactory: '.createGroupHeader' }"
+				items="{ path: '/SalesOrderSet', sorter: { path: 'CreatedAt', descending: true }, parameters: { 'expand': 'ToBusinessPartner' } , groupHeaderFactory: '.createGroupHeader' }"
 				busyIndicatorDelay="{masterView>/delay}" noDataText="{masterView>/noDataText}"
 				mode="{= ${device>/system/phone} ? 'None' : 'SingleSelectMaster'}" growing="true" growingScrollToLoad="true"
 				updateFinished=".onUpdateFinished" selectionChange=".onSelectionChange">
@@ -39,7 +38,17 @@
 				</headerToolbar>
 				<items>
 					<ObjectListItem type="Navigation" press=".onSelectionChange" title="{CustomerName}"
-						number="{ path: 'NetAmount', formatter: '.formatter.currencyValue' }" numberUnit="{CurrencyCode}"></ObjectListItem>
+						number="{ path: 'NetAmount', formatter: '.formatter.currencyValue' }" numberUnit="{CurrencyCode}">
+						<ObjectAttribute text="{ path: 'CreatedAt', type: 'sap.ui.model.type.Date', formatOptions: { style: 'short' } }"/>
+						<ObjectAttribute text="{ToBusinessPartner/BusinessPartnerID}"/>
+						<firstStatus>
+							<ObjectStatus title="{ToBusinessPartner/Address/Country}" text="{ToBusinessPartner/Address/City}"/>
+						</firstStatus>
+						<markers>
+							<ObjectMarker
+								type="{= ${ToBusinessPartner/Address/Country} === 'MX' &amp;&amp; ${ToBusinessPartner/Address/City} ==='Mexiko City' ? 'Favorite' : 'Flagged' }"/>
+						</markers>
+					</ObjectListItem>
 				</items>
 			</List>
 		</semantic:content>
