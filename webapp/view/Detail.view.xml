@@ -1,5 +1,5 @@
 <mvc:View xmlns="sap.m" xmlns:semantic="sap.f.semantic" xmlns:mvc="sap.ui.core.mvc" controllerName="opensap.Orders.controller.Detail">
-	<semantic:SemanticPage id="detailPage" busy="{detailView&gt;/busy}" busyIndicatorDelay="{detailView&gt;/delay}">
+	<semantic:SemanticPage id="detailPage" busy="{detailView&gt;/busy}" busyIndicatorDelay="{detailView&gt;/delay}" showFooter="true">
 		<semantic:titleHeading>
 			<Title text="{CustomerName}"/>
 		</semantic:titleHeading>
@@ -8,7 +8,10 @@
 			<ObjectNumber id="objectHeaderNumber" number="{ path: 'NetAmount', formatter: '.formatter.currencyValue' }" unit="{CurrencyCode}"/>
 		</semantic:headerContent>
 		<semantic:content>
-			<Table xmlns:action="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" id="lineItemsList" width="auto" items="{ToLineItems}" updateFinished=".onListUpdateFinished" noDataText="{i18n&gt;detailLineItemTableNoDataText}" busyIndicatorDelay="{detailView&gt;/lineItemTableDelay}" mode="SingleSelectMaster" selectionChange="action" action:wiring="\{'selectionChange':\{'navigation':\{'routeName':'Info'\}\}\}">
+			<Table xmlns:action="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" id="lineItemsList" width="auto" items="{ToLineItems}"
+				updateFinished=".onListUpdateFinished" noDataText="{i18n&gt;detailLineItemTableNoDataText}"
+				busyIndicatorDelay="{detailView&gt;/lineItemTableDelay}" mode="SingleSelectMaster" selectionChange="action"
+				action:wiring="\{'selectionChange':\{'navigation':\{'routeName':'Info'\}\}\}" sticky="ColumnHeaders,HeaderToolbar">
 				<headerToolbar>
 					<Toolbar>
 						<Title id="lineItemsTitle" text="{detailView&gt;/lineItemListTitle}" titleStyle="H3"/>
@@ -40,10 +43,21 @@
 			<semantic:CloseAction id="closeColumn" press=".onCloseDetailPress"/>
 		</semantic:closeAction>
 		<semantic:fullScreenAction>
-			<semantic:FullScreenAction id="enterFullScreen" visible="{= !${device&gt;/system/phone} &amp;&amp; !${appView&gt;/actionButtonsInfo/midColumn/fullScreen}}" press=".toggleFullScreen"/>
+			<semantic:FullScreenAction id="enterFullScreen"
+				visible="{= !${device&gt;/system/phone} &amp;&amp; !${appView&gt;/actionButtonsInfo/midColumn/fullScreen}}" press=".toggleFullScreen"/>
 		</semantic:fullScreenAction>
 		<semantic:exitFullScreenAction>
-			<semantic:ExitFullScreenAction id="exitFullScreen" visible="{= !${device&gt;/system/phone} &amp;&amp; ${appView&gt;/actionButtonsInfo/midColumn/fullScreen}}" press=".toggleFullScreen"/>
+			<semantic:ExitFullScreenAction id="exitFullScreen"
+				visible="{= !${device&gt;/system/phone} &amp;&amp; ${appView&gt;/actionButtonsInfo/midColumn/fullScreen}}" press=".toggleFullScreen"/>
 		</semantic:exitFullScreenAction>
+		<semantic:positiveAction>
+			<semantic:PositiveAction/>
+		</semantic:positiveAction>
+		<semantic:negativeAction>
+			<semantic:NegativeAction/>
+		</semantic:negativeAction>
+		<semantic:footerCustomActions>
+			<Button text="{i18n>DetailFooterCancel}"/>
+		</semantic:footerCustomActions>
 	</semantic:SemanticPage>
 </mvc:View>
