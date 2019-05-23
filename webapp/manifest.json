@@ -97,6 +97,14 @@
 						"master",
 						"object"
 					]
+				},
+				{
+					"name": "Info",
+					"pattern": "Info",
+					"target": [
+						"master",
+						"object"
+					]
 				}
 			],
 			"targets": {
