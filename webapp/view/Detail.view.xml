@@ -8,10 +8,7 @@
 			<ObjectNumber id="objectHeaderNumber" number="{ path: 'NetAmount', formatter: '.formatter.currencyValue' }" unit="{CurrencyCode}"/>
 		</semantic:headerContent>
 		<semantic:content>
-			<Table id="lineItemsList" width="auto" items="{ToLineItems}" updateFinished=".onListUpdateFinished"
-				noDataText="{i18n&gt;detailLineItemTableNoDataText}" busyIndicatorDelay="{detailView&gt;/lineItemTableDelay}" mode="SingleSelectMaster"
-				selectionChange="action" xmlns:action="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
-				action:wiring="\{'selectionChange':\{'navigation':\{'routeName':'Info'\}\}\}">
+			<Table xmlns:action="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" id="lineItemsList" width="auto" items="{ToLineItems}" updateFinished=".onListUpdateFinished" noDataText="{i18n&gt;detailLineItemTableNoDataText}" busyIndicatorDelay="{detailView&gt;/lineItemTableDelay}" mode="SingleSelectMaster" selectionChange="action" action:wiring="\{'selectionChange':\{'navigation':\{'routeName':'Info'\}\}\}">
 				<headerToolbar>
 					<Toolbar>
 						<Title id="lineItemsTitle" text="{detailView&gt;/lineItemListTitle}" titleStyle="H3"/>
@@ -43,12 +40,10 @@
 			<semantic:CloseAction id="closeColumn" press=".onCloseDetailPress"/>
 		</semantic:closeAction>
 		<semantic:fullScreenAction>
-			<semantic:FullScreenAction id="enterFullScreen"
-				visible="{= !${device&gt;/system/phone} &amp;&amp; !${appView&gt;/actionButtonsInfo/midColumn/fullScreen}}" press=".toggleFullScreen"/>
+			<semantic:FullScreenAction id="enterFullScreen" visible="{= !${device&gt;/system/phone} &amp;&amp; !${appView&gt;/actionButtonsInfo/midColumn/fullScreen}}" press=".toggleFullScreen"/>
 		</semantic:fullScreenAction>
 		<semantic:exitFullScreenAction>
-			<semantic:ExitFullScreenAction id="exitFullScreen"
-				visible="{= !${device&gt;/system/phone} &amp;&amp; ${appView&gt;/actionButtonsInfo/midColumn/fullScreen}}" press=".toggleFullScreen"/>
+			<semantic:ExitFullScreenAction id="exitFullScreen" visible="{= !${device&gt;/system/phone} &amp;&amp; ${appView&gt;/actionButtonsInfo/midColumn/fullScreen}}" press=".toggleFullScreen"/>
 		</semantic:exitFullScreenAction>
 	</semantic:SemanticPage>
 </mvc:View>

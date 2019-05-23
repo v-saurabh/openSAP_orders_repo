@@ -103,7 +103,8 @@
 					"pattern": "Info",
 					"target": [
 						"master",
-						"object"
+						"object",
+						"Info"
 					]
 				}
 			],
@@ -127,6 +128,11 @@
 				"notFound": {
 					"viewName": "NotFound",
 					"viewId": "notFound"
+				},
+				"Info": {
+					"viewType": "XML",
+					"viewName": "Info",
+					"controlAggregation": "endColumnPages"
 				}
 			}
 		}
