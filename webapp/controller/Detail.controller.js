@@ -4,8 +4,9 @@ sap.ui.define([
 	"sap/ui/model/json/JSONModel",
 	"../model/formatter",
 	"sap/m/library",
-	"sap/ui/Device"
-], function (BaseController, JSONModel, formatter, mobileLibrary, Device) {
+	"sap/ui/Device",
+	"sap/m/MessageToast"
+], function (BaseController, JSONModel, formatter, mobileLibrary, Device, MessageToast) {
 	"use strict";
 	// shortcut for sap.m.URLHelper
 	var URLHelper = mobileLibrary.URLHelper;
@@ -27,6 +28,15 @@ sap.ui.define([
 			this.getRouter().getRoute("Info").attachPatternMatched(this._onObjectMatched, this);
 			this.setModel(oViewModel, "detailView");
 			this.getOwnerComponent().getModel().metadataLoaded().then(this._onMetadataLoaded.bind(this));
+		},
+
+		onConfirm: function (oEvent) {
+			var oBinding = oEvent.getSource().getBindingContext().getObject();
+			var oMessage = this.getResourceBundle().getText(
+				"OrderPreparationMessage", [oBinding.CustomerID,
+					oBinding.CustomerName
+				]);
+			MessageToast.show(oMessage);
 		},
 		/* =========================================================== */
 		/* event handlers                                              */
