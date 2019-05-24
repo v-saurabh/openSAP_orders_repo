@@ -1,10 +1,7 @@
-<mvc:View controllerName="opensap.Orders.controller.Info" height="100%" 
-	xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:uxap="sap.uxap"
+<mvc:View controllerName="opensap.Orders.controller.Info" height="100%" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:uxap="sap.uxap"
 	xmlns:f="sap.f" xmlns:l="sap.ui.layout" xmlns:form="sap.ui.layout.form">
-	>
-	<uxap:ObjectPageLayout id="objectPageLayout" showTitleInHeaderContent="true" 
-		alwaysShowContentHeader="false" preserveHeaderStateOnScroll="false" 
-		headerContentPinnable="true" isChildPage="true" enableLazyLoading="false">
+	<uxap:ObjectPageLayout id="objectPageLayout" showTitleInHeaderContent="true" alwaysShowContentHeader="false"
+		preserveHeaderStateOnScroll="false" headerContentPinnable="true" isChildPage="true" enableLazyLoading="false">
 		<uxap:headerTitle>
 			<uxap:ObjectPageDynamicHeaderTitle>
 				<uxap:breadcrumbs>
@@ -15,10 +12,8 @@
 				</uxap:breadcrumbs>
 				<uxap:expandedHeading>
 					<FlexBox wrap="Wrap" fitContainer="true" alignItems="Center">
-						<Title text="{ProductID}" wrapping="true" 
-							class="sapUiTinyMarginEnd sapUiTinyMarginTop"/>
-						<FlexBox wrap="NoWrap" fitContainer="true" alignItems="Center" 
-							class="sapUiTinyMarginEnd">
+						<Title text="{ProductID}" wrapping="true" class="sapUiTinyMarginEnd sapUiTinyMarginTop"/>
+						<FlexBox wrap="NoWrap" fitContainer="true" alignItems="Center" class="sapUiTinyMarginEnd">
 							<ObjectMarker type="Favorite" class="sapUiTinyMarginEnd"/>
 							<ObjectMarker type="Flagged"/>
 						</FlexBox>
@@ -29,23 +24,16 @@
 				</uxap:expandedContent>
 				<uxap:snappedHeading>
 					<FlexBox wrap="Wrap" fitContainer="true" alignItems="Center">
-						<FlexBox wrap="NoWrap" fitContainer="true" alignItems="Center" 
-							class="sapUiTinyMarginEnd">
-							<f:Avatar src="sap-icon://product" displaySize="S" 
-								class="sapUiTinyMarginEnd"/>
-							<Title text="{ProductID}" wrapping="true" 
-								class="sapUiTinyMarginEnd"/>
+						<FlexBox wrap="NoWrap" fitContainer="true" alignItems="Center" class="sapUiTinyMarginEnd">
+							<f:Avatar src="sap-icon://product" displaySize="S" class="sapUiTinyMarginEnd"/>
+							<Title text="{ProductID}" wrapping="true" class="sapUiTinyMarginEnd"/>
 						</FlexBox>
-						<FlexBox wrap="NoWrap" fitContainer="true" alignItems="Center" 
-							class="sapUiTinyMarginEnd">
+						<FlexBox wrap="NoWrap" fitContainer="true" alignItems="Center" class="sapUiTinyMarginEnd">
 							<ObjectMarker type="Favorite" class="sapUiTinyMarginEnd"/>
 							<ObjectMarker type="Flagged"/>
 						</FlexBox>
 					</FlexBox>
 				</uxap:snappedHeading>
-				<uxap:expandedContent>
-					<Text text="{ToHeader/CustomerName}"/>
-				</uxap:expandedContent>
 				<uxap:snappedContent>
 					<Text text="{ToHeader/CustomerName}"/>
 				</uxap:snappedContent>
@@ -53,8 +41,7 @@
 		</uxap:headerTitle>
 		<uxap:headerContent>
 			<FlexBox wrap="Wrap" fitContainer="true" alignItems="Stretch">
-				<f:Avatar class="sapUiSmallMarginEnd sapUiSmallMarginTop" 
-					src="sap-icon://product" displaySize="L"/>
+				<f:Avatar class="sapUiSmallMarginEnd sapUiSmallMarginTop" src="sap-icon://product" displaySize="L"/>
 				<l:VerticalLayout class="sapUiSmallMarginEnd sapUiSmallMarginTop">
 					<Label text="{i18n>infoItemDescription}"/>
 					<Text text="{ToHeader/Note}"/>
@@ -73,23 +60,18 @@
 							<form:SimpleForm editable="true">
 								<Label text="{i18n>infoItemDetailsGrossPrice}"/>
 								<ObjectNumber
-									number="{ parts:[{path:'GrossAmount'},{path:'CurrencyCode'}], 
-										type: 'sap.ui.model.type.Currency', formatOptions: {showMeasure: false} }"
+									number="{ parts:[{path:'GrossAmount'},{path:'CurrencyCode'}], type: 'sap.ui.model.type.Currency', formatOptions: {showMeasure: false} }"
 									unit="{CurrencyCode}"/>
 								<Label text="{i18n>infoItemDetailsNetPrice}"/>
 								<ObjectNumber
-									number="{ parts:[{path:'NetAmount'},{path:'CurrencyCode'}], 
-										type: 'sap.ui.model.type.Currency', formatOptions: {showMeasure: false} }"
+									number="{ parts:[{path:'NetAmount'},{path:'CurrencyCode'}], type: 'sap.ui.model.type.Currency', formatOptions: {showMeasure: false} }"
 									unit="{CurrencyCode}"/>
 								<Label text="{i18n>infoItemDetailsTax}"/>
 								<ObjectNumber
-									number="{ parts:[{path:'TaxAmount'},{path:'CurrencyCode'}], 
-										type: 'sap.ui.model.type.Currency', formatOptions: {showMeasure: false} }"
+									number="{ parts:[{path:'TaxAmount'},{path:'CurrencyCode'}], type: 'sap.ui.model.type.Currency', formatOptions: {showMeasure: false} }"
 									unit="{CurrencyCode}"/>
 								<Label text="{i18n>infoItemDetailsQuantity}"/>
-								<ObjectNumber 
-									number="{ parts:[{path:'Quantity'}], type: 'sap.ui.model.type.Float'}" 
-									unit="{QuantityUnit}"/>
+								<ObjectNumber number="{ parts:[{path:'Quantity'}], type: 'sap.ui.model.type.Float'}" unit="{QuantityUnit}"/>
 							</form:SimpleForm>
 						</uxap:blocks>
 					</uxap:ObjectPageSubSection>

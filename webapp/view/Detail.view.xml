@@ -42,7 +42,7 @@
 							<ObjectNumber number="{Quantity}"/>
 							<ObjectIdentifier title="{ProductID}" text="{ItemPosition}"/>
 							<Text text="{ path: 'DeliveryDate', type: 'sap.ui.model.type.Date', formatOptions: { style: 'medium' } }"/>
-							<si:StatusIndicator id="statusIndicator" width="4.5rem" height="3.5rem"
+							<si:StatusIndicator id="statusIndicator" width="4.0rem" height="3.0rem"
 								value="{= (Date.parse(${DeliveryDate}) - 1546300801000) / 52560000 }">
 								<si:ShapeGroup>
 									<si:LibraryShape id="customShape0" shapeId="vehicle_truck_1"/>
