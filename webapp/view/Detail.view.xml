@@ -7,8 +7,7 @@
 		</semantic:titleHeading>
 		<semantic:headerContent>
 			<ObjectAttribute title="{i18n>StatusDesc}"/>
-			<tnt:InfoLabel text="{LifecycleStatusDescription}"
-				colorScheme="{ path: 'LifecycleStatusDescription', formatter: '.formatter.deliveryStatus' }"/>
+			<tnt:InfoLabel text="{LifecycleStatusDescription}" colorScheme="{ path: 'LifecycleStatus', formatter: '.formatter.deliveryStatus' }"/>
 		</semantic:headerContent>
 		<semantic:content>
 			<l:VerticalLayout>
@@ -16,7 +15,7 @@
 				<Table xmlns:action="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" id="lineItemsList" width="auto" items="{ToLineItems}"
 					updateFinished=".onListUpdateFinished" noDataText="{i18n&gt;detailLineItemTableNoDataText}"
 					busyIndicatorDelay="{detailView&gt;/lineItemTableDelay}" mode="SingleSelectMaster" selectionChange="action"
-					action:wiring="\{'selectionChange':\{'navigation':\{'routeName':'Info'\}\}\}">
+					sticky="ColumnHeaders,HeaderToolbar" action:wiring="\{'selectionChange':\{'navigation':\{'routeName':'Info'\}\}\}">
 					<headerToolbar>
 						<Toolbar>
 							<Title id="lineItemsTitle" text="{detailView&gt;/lineItemListTitle}" titleStyle="H3"/>
