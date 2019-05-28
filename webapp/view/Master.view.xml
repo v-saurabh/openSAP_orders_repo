@@ -1,16 +1,19 @@
 <mvc:View controllerName="opensap.Orders.controller.Master" xmlns="sap.m" xmlns:semantic="sap.f.semantic" xmlns:mvc="sap.ui.core.mvc"
 	xmlns:layout="sap.ui.layout" xmlns:f="sap.f">
 	<semantic:SemanticPage id="masterPage" preserveHeaderStateOnScroll="true" toggleHeaderOnTitleClick="false">
-		<semantic:headerContent>
-			<layout:HorizontalLayout class="sapUiContentPadding">
-				<f:Avatar src="sap-icon://sap-ui5" displaySize="S" displayShape="Circle"></f:Avatar>
-				<layout:VerticalLayout>
-					<Label text="UI5 Air Cargo" design="Bold"/>
-					<ObjectAttribute text="You name it, we ship it!"/>
-				</layout:VerticalLayout>
-			</layout:HorizontalLayout>
-			<ObjectAttribute text="{masterView>/title}"/>
-		</semantic:headerContent>
+		<semantic:titleHeading>
+			<layout:VerticalLayout>
+				<layout:HorizontalLayout class="sapUiContentPadding">
+					<f:Avatar src="sap-icon://sap-ui5" displaySize="L"></f:Avatar>
+					<layout:VerticalLayout class="sapUiContentPadding">
+						<layout:VerticalLayout >
+							<ObjectIdentifier title="UI5 Air Cargo" text="You name it, we ship it"/>
+						</layout:VerticalLayout>
+					</layout:VerticalLayout>
+				</layout:HorizontalLayout>
+				<Title id="masterPageTitle" text="{masterView>/title}" level="H2"/>
+			</layout:VerticalLayout>
+		</semantic:titleHeading>
 		<semantic:content>
 			<!-- For client side filtering add this to the items attribute: parameters: {operationMode: 'Client'}}" -->
 			<List id="list" width="auto" class="sapFDynamicPageAlignContent"
